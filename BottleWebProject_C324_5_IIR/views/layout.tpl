@@ -6,6 +6,9 @@
     <title>{{ title }} - Kinematics Lab</title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    % if title == 'Home Page':
+    <link rel="stylesheet" type="text/css" href="/static/content/index_style.css" />
+    % end
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
 </head>
 

@@ -1,29 +1,35 @@
 % rebase('layout.tpl', title='Home Page', year=year)
 
-<div class="jumbotron">
-    <h1>Bottle</h1>
-    <p class="lead">Bottle is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://bottlepy.org/docs/dev/index.html" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
+<!-- Hero секция главной страницы -->
+<section class="hero-section">
+    <!-- Иконка -->
+    <div class="hero-icon-wrapper">
+        <div class="hero-icon-glow"></div>
+        <div class="hero-icon-circle">
+            <svg class="hero-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3" />
+                <circle cx="12" cy="12" r="7" stroke-dasharray="2 3" />
+                <circle cx="12" cy="12" r="10" stroke-dasharray="2 3" />
+                <path d="M12 2v2m0 16v2M2 12h2m16 0h2" stroke-linecap="round" />
+            </svg>
+        </div>
+    </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Bottle gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://bottlepy.org/docs/dev/index.html">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
-    </div>
-</div>
+    <!-- Заголовок -->
+    <h1 class="hero-title">Kinematics Lab</h1>
+
+    <!-- Описание проекта -->
+    <p class="hero-description">
+        Интерактивные физические симуляции для изучения относительного движения, вертикальных запусков и принципов кинематики.
+        Настраивайте параметры в реальном времени и визуализируйте результаты с помощью динамических анимаций и графиков.
+    </p>
+
+    <!-- Кнопка призыва к действию -->
+    <a href="/about" class="hero-button">
+        Начать эксперименты
+        <svg class="hero-button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+        </svg>
+    </a>
+</section>

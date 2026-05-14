@@ -1,0 +1,98 @@
+/* Стили для главной страницы */
+
+.hero-section {
+    text-align: center;
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Иконка */
+.hero-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.hero-icon-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #E9BE5F;
+    border-radius: 50%;
+    filter: blur(48px);
+    opacity: 0.3;
+}
+
+.hero-icon-circle {
+    position: relative;
+    background: rgba(233, 190, 95, 0.2);
+    backdrop-filter: blur(12px);
+    padding: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(233, 190, 95, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-icon {
+    width: 80px;
+    height: 80px;
+    stroke: #282823;
+}
+
+/* Заголовок */
+.hero-title {
+    color: #282823;
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    letter-spacing: -1px;
+}
+
+/* Описание */
+.hero-description {
+    color: #595C56;
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 32px;
+}
+
+/* Кнопка */
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #E9BE5F;
+    color: #282823;
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.hero-button:hover {
+    background-color: rgba(233, 190, 95, 0.8);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    text-decoration: none;
+    color: #282823;
+    transform: translateY(-2px);
+}
+
+.hero-button-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #282823;
+}
