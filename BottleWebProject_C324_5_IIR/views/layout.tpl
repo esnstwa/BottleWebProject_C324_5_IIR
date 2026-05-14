@@ -9,6 +9,9 @@
     % if title == 'Home Page':
     <link rel="stylesheet" type="text/css" href="/static/content/index_style.css" />
     % end
+    % if title == 'Об авторах':
+    <link rel="stylesheet" type="text/css" href="/static/content/contact_style.css" />
+    % end
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
 </head>
 

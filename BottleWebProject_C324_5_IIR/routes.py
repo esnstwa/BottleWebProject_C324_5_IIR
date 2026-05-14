@@ -15,17 +15,6 @@ def home():
         current_path=request.path
     )
 
-@route('/contact')
-@view('contact')
-def contact():
-    """Renders the contact page."""
-    return dict(
-        title='Contact',
-        message='Your contact page.',
-        year=datetime.now().year,
-        current_path=request.path
-    )
-
 @route('/about')
 @view('about')
 def about():
@@ -33,6 +22,16 @@ def about():
     return dict(
         title='About',
         message='Your application description page.',
+        year=datetime.now().year,
+        current_path=request.path
+    )
+
+@route('/contact')
+@view('contact')
+def contact():
+    """Renders the contact page."""
+    return dict(
+        title='Об авторах',
         year=datetime.now().year,
         current_path=request.path
     )
