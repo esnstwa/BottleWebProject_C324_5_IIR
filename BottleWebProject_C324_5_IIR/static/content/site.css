@@ -40,3 +40,174 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+/* Стили для шапки сайта */
+.header {
+    background-color: #282823;
+    color: #F5E8B6;
+    padding: 16px 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+}
+
+.header-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Логотип */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: #F5E8B6;
+    transition: opacity 0.3s;
+}
+
+    .logo-link:hover {
+        opacity: 0.8;
+        text-decoration: none;
+        color: #F5E8B6;
+    }
+
+.logo-wrapper {
+    position: relative;
+}
+
+.logo-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #E9BE5F;
+    border-radius: 50%;
+    filter: blur(12px);
+    opacity: 0.5;
+}
+
+.logo-circle {
+    position: relative;
+    background-color: #E9BE5F;
+    padding: 12px;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    stroke: #282823;
+}
+
+.logo-text h1 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.logo-text p {
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* Навигация */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #F5E8B6;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+    .nav-link:hover {
+        background-color: #595C56;
+        text-decoration: none;
+        color: #F5E8B6;
+    }
+
+    .nav-link.active {
+        background-color: #E9BE5F;
+        color: #282823;
+    }
+
+    .nav-link:active,
+    .nav-link:focus {
+        background-color: #E9BE5F;
+        color: #282823;
+    }
+
+.nav-icon {
+    width: 16px;
+    height: 16px;
+    stroke: #F5E8B6;
+}
+
+.nav-link.active .nav-icon {
+    stroke: #282823;
+}
+
+/* Бейджи */
+.badges {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.badge-git {
+    background-color: #595C56;
+    color: #F5E8B6;
+}
+
+.badge-tests {
+    background-color: #E9BE5F;
+    color: #282823;
+}
+
+.badge-icon {
+    font-size: 16px;
+}
+
+/* Основной контент */
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.body-content {
+    padding: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
