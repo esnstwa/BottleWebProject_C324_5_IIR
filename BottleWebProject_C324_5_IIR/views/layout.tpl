@@ -64,11 +64,24 @@
     <!-- Основной контент -->
     <div class="container body-content">
         {{!base}}
-        <hr />
-        <footer>
-            <p>&copy; {{ year }} - My Bottle Application</p>
-        </footer>
     </div>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="footer-container">
+            <h3 class="footer-title">Kinematics Lab</h3>
+
+            <nav class="footer-nav">
+                <a href="/home" class="footer-link">Главная</a>
+                <a href="/about" class="footer-link">Симуляции</a>
+                <a href="/contact" class="footer-link">Об авторах</a>
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; {{ year }} Kinematics Lab</p>
+        </div>
+    </footer>
 
     <script src="/static/scripts/jquery-1.10.2.js"></script>
     <script src="/static/scripts/bootstrap.js"></script>
