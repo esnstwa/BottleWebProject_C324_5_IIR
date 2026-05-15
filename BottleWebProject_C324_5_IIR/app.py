@@ -6,6 +6,10 @@ import bottle
 import os
 import sys
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static').replace('\\', '/')
+bottle.TEMPLATE_PATH.insert(0, os.path.join(PROJECT_ROOT, 'views'))
+
 # routes contains the HTTP handlers for our server and must be imported.
 import routes
 
@@ -20,8 +24,6 @@ def wsgi_app():
     return bottle.default_app()
 
 if __name__ == '__main__':
-    PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static').replace('\\', '/')
     HOST = os.environ.get('SERVER_HOST', 'localhost')
     try:
         PORT = int(os.environ.get('SERVER_PORT', '5555'))
@@ -37,3 +39,4 @@ if __name__ == '__main__':
 
     # Starts a local test server.
     bottle.run(server='wsgiref', host=HOST, port=PORT)
+
