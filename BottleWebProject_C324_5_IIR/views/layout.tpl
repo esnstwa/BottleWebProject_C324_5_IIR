@@ -95,6 +95,9 @@
     <script src="/static/scripts/jquery-1.10.2.js"></script>
     <script src="/static/scripts/bootstrap.js"></script>
     <script src="/static/scripts/respond.js"></script>
+    % if title == 'Симуляции':
+    <script src="/static/scripts/trains_simulation.js"></script>
+    % end
 
 </body>
 </html>

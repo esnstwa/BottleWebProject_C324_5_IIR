@@ -508,9 +508,101 @@
     <!-- Вкладка: Встреча поездов -->
     % elif simulation == 'trains':
     <div class="tab-content active">
-        <div class="simulation-placeholder">
-            <h2>Симуляция встречи поездов</h2>
-            <p>Содержимое симуляции будет реализовано здесь</p>
+        <div class="trains-simulation-grid">
+            <!-- Левая панель: параметры и результаты -->
+            <div class="trains-params-panel">
+                <h3 class="panel-title">Параметры встречи поездов</h3>
+
+                <div class="params-container">
+                    <!-- Скорость первого поезда -->
+                    <div class="param-group">
+                        <label class="param-label">
+                            Скорость поезда 1: <span id="train1-speed-value">20</span> м/с
+                        </label>
+                        <input type="range" id="train1-speed" class="param-slider"
+                               min="10" max="40" step="1" value="20">
+                    </div>
+
+                    <!-- Скорость второго поезда -->
+                    <div class="param-group">
+                        <label class="param-label">
+                            Скорость поезда 2: <span id="train2-speed-value">25</span> м/с
+                        </label>
+                        <input type="range" id="train2-speed" class="param-slider"
+                               min="10" max="40" step="1" value="25">
+                    </div>
+
+                    <!-- Длина первого поезда -->
+                    <div class="param-group">
+                        <label class="param-label">
+                            Длина поезда 1: <span id="train1-length-value">150</span> м
+                        </label>
+                        <input type="range" id="train1-length" class="param-slider"
+                               min="50" max="300" step="10" value="150">
+                    </div>
+
+                    <!-- Длина второго поезда -->
+                    <div class="param-group">
+                        <label class="param-label">
+                            Длина поезда 2: <span id="train2-length-value">200</span> м
+                        </label>
+                        <input type="range" id="train2-length" class="param-slider"
+                               min="50" max="300" step="10" value="200">
+                    </div>
+
+                    <!-- Кнопка запуска симуляции -->
+                    <button id="simulate-btn" class="simulate-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                        Запустить симуляцию
+                    </button>
+
+                    <!-- Теоретическая справка -->
+                    <div class="theory-box">
+                        <h4 class="theory-title">Теория:</h4>
+                        <p class="theory-formula">t = (L₁ + L₂) / (v₁ + v₂)</p>
+                        <p class="theory-text">Относительная скорость: v<sub>отн</sub> = v₁ + v₂</p>
+                    </div>
+
+                    <!-- Результаты расчетов -->
+                    <div class="results-box">
+                        <h4 class="results-title">Результаты:</h4>
+                        <p class="result-item">Время встречи: <strong id="meeting-time">7.78 с</strong></p>
+                        <p class="result-item">Расстояние поезда 1: <strong id="distance1">155.56 м</strong></p>
+                        <p class="result-item">Расстояние поезда 2: <strong id="distance2">194.44 м</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая панель: визуализация -->
+            <div class="trains-visualization-panel">
+                <div class="visualization-header">
+                    <h3 class="panel-title">Визуализация</h3>
+                    <button class="download-button" title="Скачать">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="trains-canvas" class="trains-canvas"></canvas>
+                    <div class="canvas-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect width="16" height="16" x="4" y="3" rx="2"/>
+                            <path d="M4 11h16"/>
+                            <path d="M12 3v8"/>
+                            <path d="m8 19-2 3"/>
+                            <path d="m18 22-2-3"/>
+                            <path d="M8 15h0"/>
+                            <path d="M16 15h0"/>
+                        </svg>
+                        <p>Здесь будет анимация встречного движения поездов</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     % end
