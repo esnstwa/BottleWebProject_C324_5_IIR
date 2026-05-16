@@ -51,9 +51,106 @@
     <!-- Вкладка: Переправа через реку -->
     % if simulation == 'river':
     <div class="tab-content active">
-        <div class="simulation-placeholder">
-            <h2>Симуляция переправы через реку</h2>
-            <p>Содержимое симуляции будет реализовано здесь</p>
+        <div class="river-simulation-grid">
+            <div class="river-params-panel">
+                <h3 class="panel-title">Параметры переправы через реку</h3>
+
+                <div class="params-container">
+                    <div class="param-group">
+                        <label class="param-label">
+                            Скорость катера v₁: <span id="river-boat-speed-value">5.0</span> м/с
+                        </label>
+                        <input type="range" id="river-boat-speed" class="param-slider river-slider"
+                               min="0.1" max="15" step="0.1" value="5">
+                    </div>
+
+                    <div class="param-group">
+                        <label class="param-label">
+                            Скорость течения v₂: <span id="river-current-speed-value">2.0</span> м/с
+                        </label>
+                        <input type="range" id="river-current-speed" class="param-slider river-slider"
+                               min="0" max="10" step="0.1" value="2">
+                    </div>
+
+                    <div class="param-group">
+                        <label class="param-label">
+                            Ширина реки L: <span id="river-width-value">100.0</span> м
+                        </label>
+                        <input type="range" id="river-width" class="param-slider river-slider"
+                               min="10" max="300" step="0.1" value="100">
+                    </div>
+
+                    <button id="river-simulate-btn" class="simulate-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                        Запустить симуляцию
+                    </button>
+
+                    <div class="theory-box">
+                        <h4 class="theory-title">Теория:</h4>
+                        <p class="theory-formula">t = L / v₁</p>
+                        <p class="theory-formula">S = v₂ × t</p>
+                        <p class="theory-text">Катер держит курс перпендикулярно берегу, а течение сносит его вниз по реке.</p>
+                    </div>
+
+                    <div class="results-box">
+                        <h4 class="results-title">Результаты:</h4>
+                        <p class="result-item">Время переправы: <strong id="river-crossing-time">20.00 с</strong></p>
+                        <p class="result-item">Смещение по течению: <strong id="river-drift">40.00 м</strong></p>
+                        <p class="result-item">Итоговая скорость: <strong id="river-result-speed">5.39 м/с</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="river-visualization-panel">
+                <div class="visualization-header">
+                    <h3 class="panel-title">Визуализация</h3>
+                    <button id="river-download-btn" class="download-button" title="Скачать">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="river-canvas-container">
+                    <div class="river-static-diagram" aria-label="Схема переправы катера через реку">
+                        <svg viewBox="0 0 640 420" role="img">
+                            <rect x="0" y="0" width="640" height="420" class="river-bank"/>
+                            <rect x="0" y="76" width="640" height="268" class="river-water"/>
+                            <path d="M0 118 C130 92 235 145 360 118 S530 96 640 122" class="river-wave"/>
+                            <path d="M0 205 C120 178 260 228 386 202 S540 176 640 205" class="river-wave"/>
+                            <path d="M0 292 C132 320 246 268 372 292 S535 316 640 286" class="river-wave"/>
+
+                            <line x1="86" y1="344" x2="86" y2="76" class="river-measure"/>
+                            <line x1="67" y1="76" x2="105" y2="76" class="river-measure"/>
+                            <line x1="67" y1="344" x2="105" y2="344" class="river-measure"/>
+                            <text x="36" y="218" class="river-label-dark">L</text>
+
+                            <line x1="190" y1="314" x2="190" y2="135" class="river-guide"/>
+                            <line x1="190" y1="314" x2="430" y2="135" class="river-path"/>
+
+                            <g class="river-boat" transform="translate(190 314)">
+                                <path d="M-42 -8 H42 L25 20 H-27 Z"/>
+                                <rect x="-13" y="-28" width="26" height="20"/>
+                            </g>
+
+                            <line x1="190" y1="314" x2="190" y2="210" class="river-arrow-main"/>
+                            <path d="M190 210 L178 232 M190 210 L202 232" class="river-arrow-head-main"/>
+                            <text x="210" y="260" class="river-label-light">v₁</text>
+
+                            <line x1="220" y1="333" x2="350" y2="333" class="river-arrow-light"/>
+                            <path d="M350 333 L328 321 M350 333 L328 345" class="river-arrow-head-light"/>
+                            <text x="272" y="366" class="river-label-light">v₂</text>
+
+                            <line x1="190" y1="112" x2="430" y2="112" class="river-arrow-main thin"/>
+                            <path d="M430 112 L408 100 M430 112 L408 124" class="river-arrow-head-main"/>
+                            <text x="302" y="96" class="river-label-light">S</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Вкладка: Вертикальный запуск -->

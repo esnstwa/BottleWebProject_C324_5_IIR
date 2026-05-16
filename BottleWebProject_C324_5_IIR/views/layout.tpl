@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/static/content/index_style.css?v=13" />
     % end
     % if title == 'Симуляции':
-    <link rel="stylesheet" type="text/css" href="/static/content/simulations_style.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/simulations_style.css?v=3" />
     % end
     % if title == 'Об авторах':
     <link rel="stylesheet" type="text/css" href="/static/content/about_style.css" />
