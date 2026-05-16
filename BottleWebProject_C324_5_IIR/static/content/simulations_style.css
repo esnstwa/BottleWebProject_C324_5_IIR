@@ -496,3 +496,234 @@
         height: 420px;
     }
 }
+
+/* Стили для модальных окон обучения (Onboarding Tour) */
+
+/* Кнопка запуска тура (справа внизу) */
+.onboarding-trigger {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: #E9BE5F;
+    color: #282823;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 40;
+}
+
+.onboarding-trigger:hover {
+    background: #F5E8B6;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.onboarding-trigger svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Оверлей (затемнение фона) */
+.onboarding-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.onboarding-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Модальное окно */
+.onboarding-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: rgba(233, 190, 95, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 50;
+    max-width: 480px;
+    width: 90%;
+    border: 2px solid #E9BE5F;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.onboarding-modal.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Кнопка закрытия */
+.onboarding-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    color: #282823;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.onboarding-close:hover {
+    background: rgba(40, 40, 35, 0.1);
+    color: #595C56;
+}
+
+.onboarding-close svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Контент модального окна */
+.onboarding-content {
+    margin-bottom: 24px;
+}
+
+/* Бейдж с номером шага */
+.onboarding-step-badge {
+    display: inline-block;
+    background: #282823;
+    color: #E9BE5F;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+/* Заголовок */
+.onboarding-title {
+    color: #282823;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+}
+
+/* Описание */
+.onboarding-description {
+    color: #282823;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Кнопки действий */
+.onboarding-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.onboarding-btn {
+    flex: 1;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.onboarding-btn-skip {
+    background: transparent;
+    border: 2px solid #282823;
+    color: #282823;
+}
+
+.onboarding-btn-skip:hover {
+    background: #282823;
+    color: #E9BE5F;
+}
+
+.onboarding-btn-next {
+    background: #282823;
+    border: 2px solid #282823;
+    color: #E9BE5F;
+}
+
+.onboarding-btn-next:hover {
+    background: #595C56;
+    border-color: #595C56;
+}
+
+.onboarding-btn-next svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Индикаторы шагов */
+.onboarding-indicators {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.onboarding-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(40, 40, 35, 0.3);
+    transition: background 0.3s ease;
+}
+
+.onboarding-indicator.active {
+    background: #282823;
+}
+
+/* Адаптивность */
+@media (max-width: 640px) {
+    .onboarding-modal {
+        padding: 24px;
+        max-width: 95%;
+    }
+
+    .onboarding-title {
+        font-size: 20px;
+    }
+
+    .onboarding-description {
+        font-size: 15px;
+    }
+
+    .onboarding-trigger {
+        width: 48px;
+        height: 48px;
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .onboarding-trigger svg {
+        width: 20px;
+        height: 20px;
+    }
+}

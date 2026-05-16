@@ -96,6 +96,7 @@
     <script src="/static/scripts/bootstrap.js"></script>
     <script src="/static/scripts/respond.js"></script>
     % if title == 'Симуляции':
+    <script src="/static/scripts/onboarding_tour.js"></script>
     <script src="/static/scripts/tooltips.js"></script>
     <script src="/static/scripts/trains_simulation.js"></script>
     <script src="/static/scripts/launch_simulation.js"></script>
