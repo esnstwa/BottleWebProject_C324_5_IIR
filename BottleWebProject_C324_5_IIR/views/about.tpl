@@ -13,10 +13,7 @@
         <!-- Автор 1: Исаков Артём -->
         <div class="author-card">
             <div class="author-avatar">
-                <svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                </svg>
+                <img src="/static/images/cat_1.jpg" alt="Исаков Артём" class="author-photo">
             </div>
             <h3 class="author-name">Исаков Артём</h3>
             <p class="author-description">Разработка модуля построения графиков координаты, скорости и ускорения для вертикального движения тела.</p>
@@ -40,10 +37,7 @@
         <!-- Автор 2: Иванова Ксения -->
         <div class="author-card">
             <div class="author-avatar">
-                <svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                </svg>
+                <img src="/static/images/cat_2.jpg" alt="Иванова Ксения" class="author-photo">
             </div>
             <h3 class="author-name">Иванова Ксения</h3>
             <p class="author-description">Разработка модуля расчёта времени прохождения двух встречных поездов мимо друг друга.</p>
@@ -67,10 +61,7 @@
         <!-- Автор 3: Рожнев Данил -->
         <div class="author-card">
             <div class="author-avatar">
-                <svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                </svg>
+                <img src="/static/images/cat_3.jpg" alt="Рожнев Данил" class="author-photo">
             </div>
             <h3 class="author-name">Рожнев Данил</h3>
             <p class="author-description">Разработка модуля расчёта переправы катера через реку с учётом скорости течения.</p>

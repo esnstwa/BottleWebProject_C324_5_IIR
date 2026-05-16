@@ -50,32 +50,23 @@
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 
-/* Аватар с подсветкой */
+/* Аватар */
 .author-avatar {
-    position: relative;
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 24px;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    outline: 4px solid #E9BE5F;
+    outline-offset: 0;
 }
 
-.author-avatar::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: #E9BE5F;
-    border-radius: 50%;
-    filter: blur(8px);
-    opacity: 0.4;
-}
-
-.author-avatar svg {
-    position: relative;
-    width: 96px;
-    height: 96px;
-    background: linear-gradient(135deg, #E9BE5F 0%, #d4a84e 100%);
-    border-radius: 50%;
-    padding: 24px;
-    box-shadow: 0 4px 12px rgba(233, 190, 95, 0.3);
+.author-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .avatar-icon {
