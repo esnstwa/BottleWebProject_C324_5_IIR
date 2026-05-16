@@ -51,120 +51,181 @@
     <!-- Вкладка: Переправа через реку -->
     % if simulation == 'river':
     <div class="tab-content active">
-        <div class="river-simulation-grid">
-            <div class="river-params-panel">
-                <h3 class="panel-title">Параметры переправы через реку</h3>
+        <div class="sim-intro">
+            <h2>Что такое переправа через реку?</h2>
+            <p>
+                Когда катер пересекает реку с течением, его фактическая траектория отличается от направления движения.
+                Эта симуляция показывает, как течение влияет на путь катера и на какое расстояние его снесет вниз по реке.
+            </p>
+            <div class="sim-warning">
+                <svg class="sim-warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <div>
+                    <strong>Распространённая ошибка:</strong> Многие думают, что катер движется по прямой линии перпендикулярно берегу.
+                    Неправильно! Течение постоянно сносит катер вниз по реке, поэтому реальная траектория — это диагональная линия.
+                </div>
+            </div>
+        </div>
 
-                <div class="params-container">
-                    <div class="param-group">
-                        <label class="param-label">
-                            Скорость катера v₁: <span id="river-boat-speed-value">5.0</span> м/с
-                        </label>
-                        <input type="range" id="river-boat-speed" class="param-slider river-slider"
-                               min="0.1" max="15" step="0.1" value="5">
+        <div class="sim-grid">
+            <!-- Левая колонка: Параметры -->
+            <div class="sim-panel">
+                <h3>Параметры переправы через реку</h3>
+
+                <div class="sim-slider-group">
+                    <div class="sim-slider-label">
+                        <span>Скорость катера v₁: <span id="riverBoatSpeedValue">5.0</span> м/с</span>
+                        <button class="tooltip-trigger" data-tooltip="river-boat-speed-tooltip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </button>
                     </div>
-
-                    <div class="param-group">
-                        <label class="param-label">
-                            Скорость течения v₂: <span id="river-current-speed-value">2.0</span> м/с
-                        </label>
-                        <input type="range" id="river-current-speed" class="param-slider river-slider"
-                               min="0" max="10" step="0.1" value="2">
+                    <div class="sim-slider-wrapper">
+                        <input type="range" class="sim-slider" id="riverBoatSpeedSlider" min="0.1" max="15" step="0.1" value="5">
                     </div>
+                </div>
 
-                    <div class="param-group">
-                        <label class="param-label">
-                            Ширина реки L: <span id="river-width-value">100.0</span> м
-                        </label>
-                        <input type="range" id="river-width" class="param-slider river-slider"
-                               min="10" max="300" step="0.1" value="100">
+                <div class="sim-slider-group">
+                    <div class="sim-slider-label">
+                        <span>Скорость течения v₂: <span id="riverCurrentSpeedValue">2.0</span> м/с</span>
+                        <button class="tooltip-trigger" data-tooltip="river-current-speed-tooltip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </button>
                     </div>
-
-                    <button id="river-simulate-btn" class="simulate-button">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="5 3 19 12 5 21 5 3"/>
-                        </svg>
-                        Запустить симуляцию
-                    </button>
-
-                    <div class="theory-box">
-                        <h4 class="theory-title">Теория:</h4>
-                        <p class="theory-formula">t = L / v₁</p>
-                        <p class="theory-formula">S = v₂ × t</p>
-                        <p class="theory-text">Катер держит курс перпендикулярно берегу, а течение сносит его вниз по реке.</p>
+                    <div class="sim-slider-wrapper">
+                        <input type="range" class="sim-slider" id="riverCurrentSpeedSlider" min="0" max="10" step="0.1" value="2">
                     </div>
+                </div>
 
-                    <div class="results-box">
-                        <h4 class="results-title">Результаты:</h4>
-                        <p class="result-item">Время переправы: <strong id="river-crossing-time">20.00 с</strong></p>
-                        <p class="result-item">Смещение по течению: <strong id="river-drift">40.00 м</strong></p>
-                        <p class="result-item">Итоговая скорость: <strong id="river-result-speed">5.39 м/с</strong></p>
+                <div class="sim-slider-group">
+                    <div class="sim-slider-label">
+                        <span>Ширина реки L: <span id="riverWidthValue">100.0</span> м</span>
+                        <button class="tooltip-trigger" data-tooltip="river-width-tooltip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </button>
                     </div>
+                    <div class="sim-slider-wrapper">
+                        <input type="range" class="sim-slider" id="riverWidthSlider" min="10" max="300" step="0.1" value="100">
+                    </div>
+                </div>
+
+                <button class="sim-btn" id="riverSimulateBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Запустить симуляцию
+                </button>
+
+                <div class="sim-theory">
+                    <h4>Теория:</h4>
+                    <p>t = L / v₁</p>
+                    <p>S = v₂ × t</p>
+                    <p>v_рез = √(v₁² + v₂²)</p>
+                </div>
+
+                <div class="sim-results">
+                    <h4>Результаты:</h4>
+                    <p>Время переправы: <strong id="riverCrossingTime">20.00 с</strong></p>
+                    <p>Смещение по течению: <strong id="riverDrift">40.00 м</strong></p>
+                    <p>Итоговая скорость: <strong id="riverResultSpeed">5.39 м/с</strong></p>
                 </div>
             </div>
 
-            <div class="river-visualization-panel">
-                <div class="visualization-header">
-                    <h3 class="panel-title">Визуализация</h3>
-                    <button id="river-download-btn" class="download-button" title="Скачать">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="river-canvas-container">
-                    <div class="river-static-diagram" aria-label="Схема переправы катера через реку">
-                        <svg viewBox="0 0 640 420" role="img">
-                            <rect x="0" y="0" width="640" height="420" class="river-bank"/>
-                            <rect x="0" y="76" width="640" height="268" class="river-water"/>
-                            <path d="M0 118 C130 92 235 145 360 118 S530 96 640 122" class="river-wave"/>
-                            <path d="M0 205 C120 178 260 228 386 202 S540 176 640 205" class="river-wave"/>
-                            <path d="M0 292 C132 320 246 268 372 292 S535 316 640 286" class="river-wave"/>
-
-                            <line x1="86" y1="344" x2="86" y2="76" class="river-measure"/>
-                            <line x1="67" y1="76" x2="105" y2="76" class="river-measure"/>
-                            <line x1="67" y1="344" x2="105" y2="344" class="river-measure"/>
-                            <text x="36" y="218" class="river-label-dark">L</text>
-
-                            <line x1="190" y1="314" x2="190" y2="135" class="river-guide"/>
-                            <line x1="190" y1="314" x2="430" y2="135" class="river-path"/>
-
-                            <g class="river-boat" transform="translate(190 314)">
-                                <path d="M-42 -8 H42 L25 20 H-27 Z"/>
-                                <rect x="-13" y="-28" width="26" height="20"/>
-                            </g>
-
-                            <line x1="190" y1="314" x2="190" y2="210" class="river-arrow-main"/>
-                            <path d="M190 210 L178 232 M190 210 L202 232" class="river-arrow-head-main"/>
-                            <text x="210" y="260" class="river-label-light">v₁</text>
-
-                            <line x1="220" y1="333" x2="350" y2="333" class="river-arrow-light"/>
-                            <path d="M350 333 L328 321 M350 333 L328 345" class="river-arrow-head-light"/>
-                            <text x="272" y="366" class="river-label-light">v₂</text>
-
-                            <line x1="190" y1="112" x2="430" y2="112" class="river-arrow-main thin"/>
-                            <path d="M430 112 L408 100 M430 112 L408 124" class="river-arrow-head-main"/>
-                            <text x="302" y="96" class="river-label-light">S</text>
-                        </svg>
+            <!-- Правая колонка: Визуализация -->
+            <div class="sim-right-column">
+                <div class="sim-panel">
+                    <div class="sim-panel-header">
+                        <h3>Визуализация</h3>
+                        <button class="sim-download-btn" id="riverDownloadBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sim-canvas-wrapper">
+                        <canvas class="sim-canvas" id="riverCanvas" style="height: 500px;"></canvas>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Tooltip контент для переправы через реку -->
+        <div class="tooltip-content" id="river-boat-speed-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-section">
+                <h4>Что это означает:</h4>
+                <p>Скорость катера — это скорость, с которой катер движется относительно воды. Измеряется в метрах в секунду (м/с).</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Что происходит при изменении:</h4>
+                <p>Чем выше скорость катера, тем быстрее он пересечет реку, но течение все равно будет сносить его вниз по реке.</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Пример из жизни:</h4>
+                <p>Моторная лодка обычно движется со скоростью 5-10 м/с (18-36 км/ч), а скоростной катер может развивать до 20 м/с (72 км/ч).</p>
+            </div>
+        </div>
+
+        <div class="tooltip-content" id="river-current-speed-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-section">
+                <h4>Что это означает:</h4>
+                <p>Скорость течения — это скорость, с которой вода движется вниз по реке. Измеряется в метрах в секунду (м/с).</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Что происходит при изменении:</h4>
+                <p>Чем сильнее течение, тем больше катер будет снесен вниз по реке во время переправы. При очень сильном течении переправа может стать опасной.</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Пример из жизни:</h4>
+                <p>Спокойная река имеет течение 0.5-1 м/с, средняя река — 2-3 м/с, а горная река может иметь течение 5-10 м/с.</p>
+            </div>
+        </div>
+
+        <div class="tooltip-content" id="river-width-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-section">
+                <h4>Что это означает:</h4>
+                <p>Ширина реки — это расстояние от одного берега до другого. Измеряется в метрах (м).</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Что происходит при изменении:</h4>
+                <p>Чем шире река, тем дольше будет длиться переправа и тем больше катер будет снесен течением вниз по реке.</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Пример из жизни:</h4>
+                <p>Небольшая река может быть шириной 50-100 метров, средняя река — 200-500 метров, а крупная река типа Волги — 1-2 километра.</p>
             </div>
         </div>
     </div>
     <!-- Вкладка: Вертикальный запуск -->
     % elif simulation == 'launch':
     <div class="tab-content active">
-        <div class="launch-intro">
+        <div class="sim-intro">
             <h2>Что такое вертикальный запуск?</h2>
             <p>
                 Когда вы бросаете мяч прямо вверх, он замедляется по мере подъёма, останавливается на мгновение в верхней точке,
                 а затем ускоряется при падении обратно вниз. Эта симуляция показывает, как высоко он поднимется и сколько времени
                 потребуется, чтобы вернуться вниз.
             </p>
-            <div class="launch-warning">
-                <svg class="launch-warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="sim-warning">
+                <svg class="sim-warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
                     <line x1="12" y1="9" x2="12" y2="13"></line>
                     <line x1="12" y1="17" x2="12.01" y2="17"></line>
@@ -177,13 +238,13 @@
             </div>
         </div>
 
-        <div class="launch-grid">
+        <div class="sim-grid">
             <!-- Левая колонка: Параметры -->
-            <div class="launch-panel">
+            <div class="sim-panel">
                 <h3>Параметры вертикального запуска</h3>
 
-                <div class="launch-slider-group">
-                    <div class="launch-slider-label">
+                <div class="sim-slider-group">
+                    <div class="sim-slider-label">
                         <span>Начальная скорость: <span id="velocityValue">20.0</span> м/с</span>
                         <button class="tooltip-trigger" data-tooltip="velocity-tooltip">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -193,13 +254,13 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="launch-slider-wrapper">
-                        <input type="range" class="launch-slider" id="velocitySlider" min="5" max="50" step="0.1" value="20">
+                    <div class="sim-slider-wrapper">
+                        <input type="range" class="sim-slider" id="velocitySlider" min="5" max="50" step="0.1" value="20">
                     </div>
                 </div>
 
-                <div class="launch-slider-group">
-                    <div class="launch-slider-label">
+                <div class="sim-slider-group">
+                    <div class="sim-slider-label">
                         <span>Начальная высота: <span id="heightValue">10.0</span> м</span>
                         <button class="tooltip-trigger" data-tooltip="height-tooltip">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -209,26 +270,26 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="launch-slider-wrapper">
-                        <input type="range" class="launch-slider" id="heightSlider" min="0" max="50" step="0.1" value="10">
+                    <div class="sim-slider-wrapper">
+                        <input type="range" class="sim-slider" id="heightSlider" min="0" max="50" step="0.1" value="10">
                     </div>
                 </div>
 
-                <button class="launch-btn">
+                <button class="sim-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polygon points="5 3 19 12 5 21 5 3"></polygon>
                     </svg>
                     Запустить симуляцию
                 </button>
 
-                <div class="launch-theory">
+                <div class="sim-theory">
                     <h4>Теория:</h4>
                     <p>h(t) = h₀ + v₀t - ½gt²</p>
                     <p>v(t) = v₀ - gt</p>
                     <p>h_max = h₀ + v₀²/2g</p>
                 </div>
 
-                <div class="launch-results">
+                <div class="sim-results">
                     <h4>Результаты:</h4>
                     <p>Максимальная высота: <strong>30.39 м</strong></p>
                     <p>Время до апогея: <strong>2.04 с</strong></p>
@@ -237,11 +298,11 @@
             </div>
 
             <!-- Правая колонка: Анимация и график -->
-            <div class="launch-right-column">
-                <div class="launch-panel">
-                    <div class="launch-panel-header">
+            <div class="sim-right-column">
+                <div class="sim-panel">
+                    <div class="sim-panel-header">
                         <h3>Анимация</h3>
-                        <button class="launch-download-btn">
+                        <button class="sim-download-btn">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -249,15 +310,15 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="launch-canvas-wrapper">
-                        <canvas class="launch-canvas" id="animationCanvas"></canvas>
+                    <div class="sim-canvas-wrapper">
+                        <canvas class="sim-canvas" id="animationCanvas"></canvas>
                     </div>
                 </div>
 
-                <div class="launch-panel">
+                <div class="sim-panel">
                     <h3>График высоты от времени</h3>
-                    <div class="launch-canvas-wrapper">
-                        <canvas class="launch-canvas" id="graphCanvas"></canvas>
+                    <div class="sim-canvas-wrapper">
+                        <canvas class="sim-canvas" id="graphCanvas"></canvas>
                     </div>
                 </div>
             </div>
@@ -299,100 +360,197 @@
     <!-- Вкладка: Встреча поездов -->
     % elif simulation == 'trains':
     <div class="tab-content active">
-        <div class="trains-simulation-grid">
-            <!-- Левая панель: параметры и результаты -->
-            <div class="trains-params-panel">
-                <h3 class="panel-title">Параметры встречи поездов</h3>
+        <div class="sim-intro">
+            <h2>Что такое встреча поездов?</h2>
+            <p>
+                Когда два поезда движутся навстречу друг другу, они встречаются быстрее, чем если бы двигался только один.
+                Эта симуляция показывает, через какое время они встретятся и какое расстояние пройдет каждый поезд.
+            </p>
+            <div class="sim-warning">
+                <svg class="sim-warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <div>
+                    <strong>Распространённая ошибка:</strong> Многие думают, что нужно учитывать только скорость одного поезда.
+                    Неправильно! При встречном движении скорости складываются — относительная скорость равна сумме скоростей обоих поездов (v₁ + v₂).
+                </div>
+            </div>
+        </div>
 
-                <div class="params-container">
-                    <!-- Скорость первого поезда -->
-                    <div class="param-group">
-                        <label class="param-label">
-                            Скорость поезда 1: <span id="train1-speed-value">20</span> м/с
-                        </label>
-                        <input type="range" id="train1-speed" class="param-slider"
-                               min="10" max="40" step="1" value="20">
+        <div class="sim-grid">
+            <!-- Левая колонка: Параметры -->
+            <div class="sim-panel">
+                <h3>Параметры встречи поездов</h3>
+
+                <div class="sim-slider-group">
+                    <div class="sim-slider-label">
+                        <span>Скорость поезда 1: <span id="train1SpeedValue">20.0</span> м/с</span>
+                        <button class="tooltip-trigger" data-tooltip="train1-speed-tooltip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </button>
                     </div>
-
-                    <!-- Скорость второго поезда -->
-                    <div class="param-group">
-                        <label class="param-label">
-                            Скорость поезда 2: <span id="train2-speed-value">25</span> м/с
-                        </label>
-                        <input type="range" id="train2-speed" class="param-slider"
-                               min="10" max="40" step="1" value="25">
+                    <div class="sim-slider-wrapper">
+                        <input type="range" class="sim-slider" id="train1SpeedSlider" min="10" max="40" step="0.1" value="20">
                     </div>
+                </div>
 
-                    <!-- Длина первого поезда -->
-                    <div class="param-group">
-                        <label class="param-label">
-                            Длина поезда 1: <span id="train1-length-value">150</span> м
-                        </label>
-                        <input type="range" id="train1-length" class="param-slider"
-                               min="50" max="300" step="10" value="150">
+                <div class="sim-slider-group">
+                    <div class="sim-slider-label">
+                        <span>Скорость поезда 2: <span id="train2SpeedValue">25.0</span> м/с</span>
+                        <button class="tooltip-trigger" data-tooltip="train2-speed-tooltip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </button>
                     </div>
-
-                    <!-- Длина второго поезда -->
-                    <div class="param-group">
-                        <label class="param-label">
-                            Длина поезда 2: <span id="train2-length-value">200</span> м
-                        </label>
-                        <input type="range" id="train2-length" class="param-slider"
-                               min="50" max="300" step="10" value="200">
+                    <div class="sim-slider-wrapper">
+                        <input type="range" class="sim-slider" id="train2SpeedSlider" min="10" max="40" step="0.1" value="25">
                     </div>
+                </div>
 
-                    <!-- Кнопка запуска симуляции -->
-                    <button id="simulate-btn" class="simulate-button">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="5 3 19 12 5 21 5 3"/>
-                        </svg>
-                        Запустить симуляцию
-                    </button>
-
-                    <!-- Теоретическая справка -->
-                    <div class="theory-box">
-                        <h4 class="theory-title">Теория:</h4>
-                        <p class="theory-formula">t = (L₁ + L₂) / (v₁ + v₂)</p>
-                        <p class="theory-text">Относительная скорость: v<sub>отн</sub> = v₁ + v₂</p>
+                <div class="sim-slider-group">
+                    <div class="sim-slider-label">
+                        <span>Длина поезда 1: <span id="train1LengthValue">150.0</span> м</span>
+                        <button class="tooltip-trigger" data-tooltip="train1-length-tooltip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </button>
                     </div>
-
-                    <!-- Результаты расчетов -->
-                    <div class="results-box">
-                        <h4 class="results-title">Результаты:</h4>
-                        <p class="result-item">Время встречи: <strong id="meeting-time">7.78 с</strong></p>
-                        <p class="result-item">Расстояние поезда 1: <strong id="distance1">155.56 м</strong></p>
-                        <p class="result-item">Расстояние поезда 2: <strong id="distance2">194.44 м</strong></p>
+                    <div class="sim-slider-wrapper">
+                        <input type="range" class="sim-slider" id="train1LengthSlider" min="50" max="300" step="0.1" value="150">
                     </div>
+                </div>
+
+                <div class="sim-slider-group">
+                    <div class="sim-slider-label">
+                        <span>Длина поезда 2: <span id="train2LengthValue">200.0</span> м</span>
+                        <button class="tooltip-trigger" data-tooltip="train2-length-tooltip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sim-slider-wrapper">
+                        <input type="range" class="sim-slider" id="train2LengthSlider" min="50" max="300" step="0.1" value="200">
+                    </div>
+                </div>
+
+                <button class="sim-btn" id="trainsSimulateBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Запустить симуляцию
+                </button>
+
+                <div class="sim-theory">
+                    <h4>Теория:</h4>
+                    <p>t = (L₁ + L₂) / (v₁ + v₂)</p>
+                    <p>v_отн = v₁ + v₂</p>
+                </div>
+
+                <div class="sim-results">
+                    <h4>Результаты:</h4>
+                    <p>Время встречи: <strong id="meetingTime">7.78 с</strong></p>
+                    <p>Расстояние поезда 1: <strong id="distance1">155.56 м</strong></p>
+                    <p>Расстояние поезда 2: <strong id="distance2">194.44 м</strong></p>
                 </div>
             </div>
 
-            <!-- Правая панель: визуализация -->
-            <div class="trains-visualization-panel">
-                <div class="visualization-header">
-                    <h3 class="panel-title">Визуализация</h3>
-                    <button class="download-button" title="Скачать">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="canvas-container">
-                    <canvas id="trains-canvas" class="trains-canvas"></canvas>
-                    <div class="canvas-placeholder">
-                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect width="16" height="16" x="4" y="3" rx="2"/>
-                            <path d="M4 11h16"/>
-                            <path d="M12 3v8"/>
-                            <path d="m8 19-2 3"/>
-                            <path d="m18 22-2-3"/>
-                            <path d="M8 15h0"/>
-                            <path d="M16 15h0"/>
-                        </svg>
-                        <p>Здесь будет анимация встречного движения поездов</p>
+            <!-- Правая колонка: Визуализация -->
+            <div class="sim-right-column">
+                <div class="sim-panel">
+                    <div class="sim-panel-header">
+                        <h3>Визуализация</h3>
+                        <button class="sim-download-btn" id="trainsDownloadBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sim-canvas-wrapper">
+                        <canvas class="sim-canvas" id="trainsCanvas" style="height: 500px;"></canvas>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Tooltip контент для встречи поездов -->
+        <div class="tooltip-content" id="train1-speed-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-section">
+                <h4>Что это означает:</h4>
+                <p>Скорость первого поезда — это скорость, с которой он движется навстречу второму поезду. Измеряется в метрах в секунду (м/с).</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Что происходит при изменении:</h4>
+                <p>Чем выше скорость первого поезда, тем быстрее произойдет встреча и тем большее расстояние он пройдет до точки встречи.</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Пример из жизни:</h4>
+                <p>Если поезд движется со скоростью 20 м/с (72 км/ч), это типичная скорость пригородного поезда.</p>
+            </div>
+        </div>
+
+        <div class="tooltip-content" id="train2-speed-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-section">
+                <h4>Что это означает:</h4>
+                <p>Скорость второго поезда — это скорость, с которой он движется навстречу первому поезду. Измеряется в метрах в секунду (м/с).</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Что происходит при изменении:</h4>
+                <p>Чем выше скорость второго поезда, тем быстрее произойдет встреча и тем большее расстояние он пройдет до точки встречи.</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Пример из жизни:</h4>
+                <p>Если поезд движется со скоростью 25 м/с (90 км/ч), это скорость скоростного пригородного поезда или электрички.</p>
+            </div>
+        </div>
+
+        <div class="tooltip-content" id="train1-length-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-section">
+                <h4>Что это означает:</h4>
+                <p>Длина первого поезда — это расстояние от головы до хвоста поезда. Измеряется в метрах (м).</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Что происходит при изменении:</h4>
+                <p>Чем длиннее поезд, тем больше времени потребуется для полного разъезда поездов, так как нужно учесть длину обоих составов.</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Пример из жизни:</h4>
+                <p>Пригородная электричка обычно имеет длину 150-200 метров (10-12 вагонов), а грузовой поезд может достигать 1000 метров.</p>
+            </div>
+        </div>
+
+        <div class="tooltip-content" id="train2-length-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-section">
+                <h4>Что это означает:</h4>
+                <p>Длина второго поезда — это расстояние от головы до хвоста поезда. Измеряется в метрах (м).</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Что происходит при изменении:</h4>
+                <p>Чем длиннее поезд, тем больше времени потребуется для полного разъезда поездов, так как нужно учесть длину обоих составов.</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Пример из жизни:</h4>
+                <p>Пассажирский поезд дальнего следования обычно имеет длину 200-300 метров (15-20 вагонов).</p>
             </div>
         </div>
     </div>

@@ -119,377 +119,22 @@
     color: #282823;
 }
 
-/* Стили для симуляции переправы через реку */
-.river-simulation-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.river-params-panel,
-.river-visualization-panel {
-    background: rgba(233, 190, 95, 0.2);
-    backdrop-filter: blur(12px);
-    border-radius: 16px;
-    padding: 24px;
-    border: 2px solid rgba(233, 190, 95, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.river-canvas-container {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #282823;
-}
-
-.river-static-diagram {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-}
-
-.river-static-diagram svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.river-bank {
-    fill: #F5E8B6;
-}
-
-.river-water {
-    fill: rgba(233, 190, 95, 0.32);
-}
-
-.river-wave {
-    fill: none;
-    stroke: rgba(245, 232, 182, 0.38);
-    stroke-width: 3;
-}
-
-.river-measure {
-    stroke: #595C56;
-    stroke-width: 3;
-    stroke-linecap: round;
-}
-
-.river-guide {
-    stroke: rgba(245, 232, 182, 0.58);
-    stroke-width: 3;
-    stroke-dasharray: 10 10;
-}
-
-.river-path {
-    stroke: #E9BE5F;
-    stroke-width: 4;
-    stroke-dasharray: 14 10;
-    stroke-linecap: round;
-}
-
-.river-boat path {
-    fill: #E9BE5F;
-    stroke: #282823;
-    stroke-width: 4;
-    stroke-linejoin: round;
-}
-
-.river-boat rect {
-    fill: #282823;
-}
-
-.river-arrow-main,
-.river-arrow-head-main {
-    fill: none;
-    stroke: #E9BE5F;
-    stroke-width: 5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.river-arrow-main.thin {
-    stroke-width: 3;
-}
-
-.river-arrow-light,
-.river-arrow-head-light {
-    fill: none;
-    stroke: #F5E8B6;
-    stroke-width: 5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.river-label-light,
-.river-label-dark {
-    font-family: Arial, sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-}
-
-.river-label-light {
-    fill: #F5E8B6;
-}
-
-.river-label-dark {
-    fill: #282823;
-}
-
-/* Стили для симуляции встречи поездов */
-.trains-simulation-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-/* Панели */
-.trains-params-panel,
-.trains-visualization-panel {
-    background: rgba(233, 190, 95, 0.2);
-    backdrop-filter: blur(12px);
-    border-radius: 16px;
-    padding: 24px;
-    border: 2px solid rgba(233, 190, 95, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.panel-title {
-    color: #282823;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0 0 24px 0;
-}
-
-/* Контейнер параметров */
-.params-container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-/* Группа параметров */
-.param-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.param-label {
-    color: #282823;
-    font-size: 16px;
-    font-weight: 500;
-    display: block;
-}
-
-/* Слайдер */
-.param-slider {
-    width: 100%;
-    height: 8px;
-    border-radius: 4px;
-    background: #595C56;
-    outline: none;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-.param-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #E9BE5F;
-    cursor: pointer;
-    border: 2px solid #282823;
-    transition: background 0.3s ease;
-}
-
-.param-slider::-webkit-slider-thumb:hover {
-    background: #F5E8B6;
-}
-
-.param-slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #E9BE5F;
-    cursor: pointer;
-    border: 2px solid #282823;
-    transition: background 0.3s ease;
-}
-
-.param-slider::-moz-range-thumb:hover {
-    background: #F5E8B6;
-}
-
-/* Кнопка симуляции */
-.simulate-button {
-    width: 100%;
-    background: #E9BE5F;
-    color: #282823;
-    padding: 12px 24px;
-    border-radius: 12px;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.simulate-button:hover {
-    background: #F5E8B6;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(233, 190, 95, 0.4);
-}
-
-.simulate-button:active {
-    transform: translateY(0);
-}
-
-/* Блок теории */
-.theory-box {
-    background: #282823;
-    color: #F5E8B6;
-    padding: 16px;
-    border-radius: 12px;
-}
-
-.theory-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0 0 8px 0;
-}
-
-.theory-formula {
-    margin: 4px 0;
-    opacity: 0.9;
-    font-family: 'Courier New', monospace;
-    font-size: 15px;
-}
-
-.theory-text {
-    margin: 4px 0;
-    opacity: 0.9;
-    font-size: 14px;
-}
-
-/* Блок результатов */
-.results-box {
-    background: #E9BE5F;
-    color: #282823;
-    padding: 16px;
-    border-radius: 12px;
-}
-
-.results-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0 0 8px 0;
-}
-
-.result-item {
-    margin: 4px 0;
-    font-size: 15px;
-}
-
-.result-item strong {
-    font-weight: 700;
-}
-
-/* Панель визуализации */
-.visualization-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-}
-
-.download-button {
-    background: transparent;
-    border: none;
-    color: #595C56;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.download-button:hover {
-    color: #282823;
-    background: rgba(233, 190, 95, 0.3);
-}
-
-/* Контейнер canvas */
-.canvas-container {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.trains-canvas {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    display: none;
-}
-
-/* Заглушка для canvas */
-.canvas-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    background: rgba(40, 40, 35, 0.05);
-    border-radius: 12px;
-    color: #595C56;
-}
-
-.canvas-placeholder svg {
-    opacity: 0.3;
-}
-
-.canvas-placeholder p {
-    font-size: 16px;
-    opacity: 0.6;
-    margin: 0;
-    text-align: center;
-    max-width: 300px;
-}
-
-/* Стили для вертикального запуска */
-.launch-intro {
+/* Общие стили для симуляций */
+.sim-intro {
     max-width: 1200px;
     margin: 0 auto 20px auto;
     padding: 0 20px;
     text-align: center;
 }
 
-.launch-intro h2 {
+.sim-intro h2 {
     color: #282823;
     font-size: 28px;
     font-weight: 600;
     margin: 0 0 16px 0;
 }
 
-.launch-intro > p {
+.sim-intro > p {
     color: #595C56;
     font-size: 17px;
     margin: 0 0 24px 0;
@@ -498,7 +143,7 @@
     margin-right: auto;
 }
 
-.launch-warning {
+.sim-warning {
     background: #282823;
     color: #F5E8B6;
     padding: 20px;
@@ -512,14 +157,14 @@
     font-size: 18px;
 }
 
-.launch-grid {
+.sim-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     padding: 20px;
 }
 
-.launch-panel {
+.sim-panel {
     background: rgba(233, 190, 95, 0.2);
     backdrop-filter: blur(10px);
     border-radius: 16px;
@@ -531,24 +176,24 @@
     height: fit-content;
 }
 
-.launch-panel:hover {
+.sim-panel:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-color: rgba(233, 190, 95, 0.3);
 }
 
-.launch-panel h3 {
+.sim-panel h3 {
     color: #282823;
     font-size: 24px;
     font-weight: 600;
     margin: 0 0 24px 0;
 }
 
-.launch-slider-group {
+.sim-slider-group {
     margin-bottom: 24px;
     overflow-x: visible;
 }
 
-.launch-slider-label {
+.sim-slider-label {
     color: #282823;
     font-size: 16px;
     font-weight: 500;
@@ -559,7 +204,7 @@
     position: relative;
 }
 
-.launch-slider-wrapper {
+.sim-slider-wrapper {
     position: relative;
     width: 100%;
     padding: 8px 0;
@@ -567,7 +212,7 @@
     display: block;
 }
 
-.launch-slider {
+.sim-slider {
     width: 100%;
     max-width: 100%;
     height: 6px;
@@ -582,7 +227,7 @@
     box-sizing: border-box;
 }
 
-.launch-slider::-webkit-slider-thumb {
+.sim-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 20px;
@@ -595,12 +240,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.launch-slider::-webkit-slider-thumb:hover {
+.sim-slider::-webkit-slider-thumb:hover {
     background: #F5E8B6;
     transform: scale(1.15);
 }
 
-.launch-slider::-moz-range-thumb {
+.sim-slider::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -611,24 +256,24 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.launch-slider::-moz-range-thumb:hover {
+.sim-slider::-moz-range-thumb:hover {
     background: #F5E8B6;
     transform: scale(1.15);
 }
 
-.launch-slider::-moz-range-progress {
+.sim-slider::-moz-range-progress {
     background: #E9BE5F;
     height: 6px;
     border-radius: 3px;
 }
 
-.launch-slider::-moz-range-track {
+.sim-slider::-moz-range-track {
     background: #595C56;
     height: 6px;
     border-radius: 3px;
 }
 
-.launch-btn {
+.sim-btn {
     width: 100%;
     background: #E9BE5F;
     color: #282823;
@@ -645,12 +290,12 @@
     gap: 8px;
 }
 
-.launch-btn:hover {
+.sim-btn:hover {
     background: #F5E8B6;
     transform: translateY(-2px);
 }
 
-.launch-theory {
+.sim-theory {
     background: #282823;
     color: #F5E8B6;
     padding: 16px;
@@ -658,24 +303,24 @@
     margin-top: 24px;
 }
 
-.launch-theory h4 {
+.sim-theory h4 {
     color: #F5E8B6;
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 12px 0;
 }
 
-.launch-theory p {
+.sim-theory p {
     font-size: 15px;
     margin: 0 0 8px 0;
     opacity: 0.9;
 }
 
-.launch-theory p:last-child {
+.sim-theory p:last-child {
     margin-bottom: 0;
 }
 
-.launch-results {
+.sim-results {
     background: #E9BE5F;
     color: #282823;
     padding: 16px;
@@ -683,57 +328,57 @@
     margin-top: 16px;
 }
 
-.launch-results h4 {
+.sim-results h4 {
     color: #282823;
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 12px 0;
 }
 
-.launch-results p {
+.sim-results p {
     font-size: 15px;
     margin: 0 0 8px 0;
 }
 
-.launch-results p:last-child {
+.sim-results p:last-child {
     margin-bottom: 0;
 }
 
-.launch-results strong {
+.sim-results strong {
     font-weight: 700;
 }
 
-.launch-canvas-wrapper {
+.sim-canvas-wrapper {
     background: #282823;
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 16px;
 }
 
-.launch-canvas {
+.sim-canvas {
     width: 100%;
     height: 250px;
     display: block;
 }
 
-.launch-right-column {
+.sim-right-column {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.launch-panel-header {
+.sim-panel-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
 }
 
-.launch-panel-header h3 {
+.sim-panel-header h3 {
     margin: 0;
 }
 
-.launch-download-btn {
+.sim-download-btn {
     background: transparent;
     border: none;
     color: #595C56;
@@ -742,11 +387,11 @@
     transition: color 0.3s ease;
 }
 
-.launch-download-btn:hover {
+.sim-download-btn:hover {
     color: #282823;
 }
 
-.launch-warning-icon {
+.sim-warning-icon {
     width: 20px;
     height: 20px;
     color: #E9BE5F;
@@ -754,7 +399,7 @@
     margin-top: 2px;
 }
 
-.launch-warning strong {
+.sim-warning strong {
     color: #E9BE5F;
 }
 
