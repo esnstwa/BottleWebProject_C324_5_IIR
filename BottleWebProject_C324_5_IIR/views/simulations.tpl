@@ -156,342 +156,23 @@
     <!-- Вкладка: Вертикальный запуск -->
     % elif simulation == 'launch':
     <div class="tab-content active">
-        <style>
-        .launch-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            padding: 20px;
-        }
-
-        .launch-panel {
-            background: rgba(233, 190, 95, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(233, 190, 95, 0.3);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .launch-panel:hover {
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-            border-color: rgba(233, 190, 95, 0.5);
-        }
-
-        .launch-panel h3 {
-            color: #282823;
-            font-size: 24px;
-            font-weight: 600;
-            margin: 0 0 24px 0;
-        }
-
-        .launch-slider-group {
-            margin-bottom: 24px;
-            overflow-x: visible;
-        }
-
-        .launch-slider-label {
-            color: #282823;
-            font-size: 14px;
-            font-weight: 500;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .launch-slider-wrapper {
-            position: relative;
-            width: 100%;
-            padding: 8px 0;
-            overflow-x: visible;
-            display: block;
-        }
-
-        .launch-slider {
-            width: 100%;
-            max-width: 100%;
-            height: 6px;
-            background: #595C56;
-            outline: none;
-            -webkit-appearance: none;
-            appearance: none;
-            border-radius: 3px;
-            cursor: pointer;
-            background: linear-gradient(to right, #E9BE5F 0%, #E9BE5F 33.33%, #595C56 33.33%, #595C56 100%);
-            display: block;
-            box-sizing: border-box;
-        }
-
-        .launch-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #E9BE5F;
-            cursor: pointer;
-            border: 3px solid #282823;
-            transition: background 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .launch-slider::-webkit-slider-thumb:hover {
-            background: #F5E8B6;
-            transform: scale(1.15);
-        }
-
-        .launch-slider::-moz-range-thumb {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #E9BE5F;
-            cursor: pointer;
-            border: 3px solid #282823;
-            transition: background 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .launch-slider::-moz-range-thumb:hover {
-            background: #F5E8B6;
-            transform: scale(1.15);
-        }
-
-        .launch-slider::-moz-range-progress {
-            background: #E9BE5F;
-            height: 6px;
-            border-radius: 3px;
-        }
-
-        .launch-slider::-moz-range-track {
-            background: #595C56;
-            height: 6px;
-            border-radius: 3px;
-        }
-
-        .launch-btn {
-            width: 100%;
-            background: #E9BE5F;
-            color: #282823;
-            padding: 12px 24px;
-            border-radius: 12px;
-            border: none;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .launch-btn:hover {
-            background: #F5E8B6;
-            transform: translateY(-2px);
-        }
-
-        .launch-theory {
-            background: #282823;
-            color: #F5E8B6;
-            padding: 16px;
-            border-radius: 12px;
-            margin-top: 24px;
-        }
-
-        .launch-theory h4 {
-            color: #F5E8B6;
-            font-size: 14px;
-            font-weight: 600;
-            margin: 0 0 12px 0;
-        }
-
-        .launch-theory p {
-            font-size: 14px;
-            margin: 0 0 8px 0;
-            opacity: 0.9;
-        }
-
-        .launch-theory p:last-child {
-            margin-bottom: 0;
-        }
-
-        .launch-results {
-            background: #E9BE5F;
-            color: #282823;
-            padding: 16px;
-            border-radius: 12px;
-            margin-top: 16px;
-        }
-
-        .launch-results h4 {
-            color: #282823;
-            font-size: 14px;
-            font-weight: 600;
-            margin: 0 0 12px 0;
-        }
-
-        .launch-results p {
-            font-size: 14px;
-            margin: 0 0 8px 0;
-        }
-
-        .launch-results p:last-child {
-            margin-bottom: 0;
-        }
-
-        .launch-results strong {
-            font-weight: 700;
-        }
-
-        .launch-canvas-wrapper {
-            background: #282823;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 16px;
-        }
-
-        .launch-canvas {
-            width: 100%;
-            height: 250px;
-            display: block;
-        }
-
-        .launch-right-column {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .launch-panel-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-
-        .launch-panel-header h3 {
-            margin: 0;
-        }
-
-        .launch-download-btn {
-            background: transparent;
-            border: none;
-            color: #595C56;
-            cursor: pointer;
-            padding: 4px;
-            transition: color 0.3s ease;
-        }
-
-        .launch-download-btn:hover {
-            color: #282823;
-        }
-
-        @media (max-width: 1024px) {
-            .launch-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .launch-info-panel {
-            background: rgba(233, 190, 95, 0.3);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(233, 190, 95, 0.4);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            margin-bottom: 24px;
-        }
-
-        .launch-info-header {
-            display: flex;
-            align-items: start;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .launch-info-icon {
-            width: 24px;
-            height: 24px;
-            color: #E9BE5F;
-            flex-shrink: 0;
-            margin-top: 4px;
-        }
-
-        .launch-info-content h2 {
-            color: #282823;
-            font-size: 20px;
-            font-weight: 600;
-            margin: 0 0 12px 0;
-        }
-
-        .launch-info-content p {
-            color: #282823;
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-
-        .launch-info-content p:last-of-type {
-            color: #595C56;
-            margin-bottom: 16px;
-        }
-
-        .launch-info-content strong {
-            font-weight: 600;
-        }
-
-        .launch-warning {
-            background: #282823;
-            color: #F5E8B6;
-            padding: 16px;
-            border-radius: 12px;
-            display: flex;
-            align-items: start;
-            gap: 12px;
-        }
-
-        .launch-warning-icon {
-            width: 20px;
-            height: 20px;
-            color: #E9BE5F;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .launch-warning strong {
-            color: #E9BE5F;
-        }
-        </style>
-
-        <div class="launch-info-panel">
-            <div class="launch-info-header">
-                <svg class="launch-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+        <div class="launch-intro">
+            <h2>Что такое вертикальный запуск?</h2>
+            <p>
+                Когда вы бросаете мяч прямо вверх, он замедляется по мере подъёма, останавливается на мгновение в верхней точке,
+                а затем ускоряется при падении обратно вниз. Эта симуляция показывает, как высоко он поднимется и сколько времени
+                потребуется, чтобы вернуться вниз.
+            </p>
+            <div class="launch-warning">
+                <svg class="launch-warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
                     <line x1="12" y1="17" x2="12.01" y2="17"></line>
                 </svg>
-                <div class="launch-info-content">
-                    <h2>Что такое вертикальный запуск?</h2>
-                    <p>
-                        Когда вы бросаете мяч прямо вверх, он замедляется по мере подъёма, останавливается на мгновение в верхней точке,
-                        а затем ускоряется при падении обратно вниз. Эта симуляция показывает, как высоко он поднимется и сколько времени
-                        потребуется, чтобы вернуться вниз.
-                    </p>
-                    <p>
-                        <strong>Аналогия из жизни:</strong> Это как подбрасывать баскетбольный мяч прямо вверх в парке — чем сильнее вы его бросите,
-                        тем выше он поднимется и тем дольше вам придётся ждать, пока он вернётся обратно!
-                    </p>
-                    <div class="launch-warning">
-                        <svg class="launch-warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
-                            <line x1="12" y1="9" x2="12" y2="13"></line>
-                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                        </svg>
-                        <div>
-                            <strong>Распространённая ошибка:</strong> Многие думают, что объект перестаёт ускоряться в верхней точке.
-                            Неправильно! Гравитация никогда не прекращает действовать — она всегда ускоряет объект вниз со скоростью 9.81 м/с²,
-                            даже в самой верхней точке, когда скорость равна нулю.
-                        </div>
-                    </div>
+                <div>
+                    <strong>Распространённая ошибка:</strong> Многие думают, что объект перестаёт ускоряться в верхней точке.
+                    Неправильно! Гравитация никогда не прекращает действовать — она всегда ускоряет объект вниз со скоростью 9.81 м/с²,
+                    даже в самой верхней точке, когда скорость равна нулю.
                 </div>
             </div>
         </div>
@@ -502,18 +183,32 @@
                 <h3>Параметры вертикального запуска</h3>
 
                 <div class="launch-slider-group">
-                    <label class="launch-slider-label">
-                        Начальная скорость: <span id="velocityValue">20.0</span> м/с
-                    </label>
+                    <div class="launch-slider-label">
+                        <span>Начальная скорость: <span id="velocityValue">20.0</span> м/с</span>
+                        <button class="tooltip-trigger" data-tooltip="velocity-tooltip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="launch-slider-wrapper">
                         <input type="range" class="launch-slider" id="velocitySlider" min="5" max="50" step="0.1" value="20">
                     </div>
                 </div>
 
                 <div class="launch-slider-group">
-                    <label class="launch-slider-label">
-                        Начальная высота: <span id="heightValue">10.0</span> м
-                    </label>
+                    <div class="launch-slider-label">
+                        <span>Начальная высота: <span id="heightValue">10.0</span> м</span>
+                        <button class="tooltip-trigger" data-tooltip="height-tooltip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="launch-slider-wrapper">
                         <input type="range" class="launch-slider" id="heightSlider" min="0" max="50" step="0.1" value="10">
                     </div>
@@ -568,39 +263,38 @@
             </div>
         </div>
 
-        <script>
-        // Обновление значений слайдеров
-        const velocitySlider = document.getElementById('velocitySlider');
-        const heightSlider = document.getElementById('heightSlider');
-        const velocityValue = document.getElementById('velocityValue');
-        const heightValue = document.getElementById('heightValue');
+        <!-- Tooltip контент вне всех контейнеров -->
+        <div class="tooltip-content" id="velocity-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-section">
+                <h4>Что это означает:</h4>
+                <p>Начальная скорость — это скорость, с которой объект начинает движение вверх. Измеряется в метрах в секунду (м/с).</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Что происходит при изменении:</h4>
+                <p>Чем выше начальная скорость, тем выше поднимется объект и тем дольше он будет в воздухе. При удвоении скорости максимальная высота увеличивается в 4 раза.</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Пример из жизни:</h4>
+                <p>Если вы бросите мяч вверх со скоростью 20 м/с (примерно 72 км/ч), он поднимется примерно на 20 метров — это высота 6-этажного здания!</p>
+            </div>
+        </div>
 
-        function updateSliderValue(slider, valueDisplay) {
-            const value = parseFloat(slider.value);
-            valueDisplay.textContent = value.toFixed(1);
-
-            // Обновляем gradient для визуализации
-            const min = parseFloat(slider.min);
-            const max = parseFloat(slider.max);
-            const percentage = ((value - min) / (max - min)) * 100;
-
-            slider.style.background = `linear-gradient(to right, #E9BE5F 0%, #E9BE5F ${percentage}%, #595C56 ${percentage}%, #595C56 100%)`;
-        }
-
-        // Инициализация при загрузке
-        window.addEventListener('load', function() {
-            updateSliderValue(velocitySlider, velocityValue);
-            updateSliderValue(heightSlider, heightValue);
-        });
-
-        velocitySlider.addEventListener('input', function() {
-            updateSliderValue(velocitySlider, velocityValue);
-        });
-
-        heightSlider.addEventListener('input', function() {
-            updateSliderValue(heightSlider, heightValue);
-        });
-        </script>
+        <div class="tooltip-content" id="height-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-section">
+                <h4>Что это означает:</h4>
+                <p>Начальная высота — это высота над землёй, с которой начинается бросок. Измеряется в метрах (м).</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Что происходит при изменении:</h4>
+                <p>Чем выше начальная точка, тем дольше объект будет падать и тем выше будет максимальная высота полёта. Это добавляет дополнительную потенциальную энергию.</p>
+            </div>
+            <div class="tooltip-section">
+                <h4>Пример из жизни:</h4>
+                <p>Если вы бросите мяч вверх с балкона 3-го этажа (около 10 метров), он поднимется выше и будет лететь дольше, чем если бы вы бросили его с земли с той же скоростью.</p>
+            </div>
+        </div>
     </div>
     <!-- Вкладка: Встреча поездов -->
     % elif simulation == 'trains':

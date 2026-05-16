@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/static/content/index_style.css?v=13" />
     % end
     % if title == 'Симуляции':
-    <link rel="stylesheet" type="text/css" href="/static/content/simulations_style.css?v=3" />
+    <link rel="stylesheet" type="text/css" href="/static/content/simulations_style.css?v=6" />
     % end
     % if title == 'Об авторах':
     <link rel="stylesheet" type="text/css" href="/static/content/about_style.css" />
@@ -97,6 +97,7 @@
     <script src="/static/scripts/respond.js"></script>
     % if title == 'Симуляции':
     <script src="/static/scripts/trains_simulation.js"></script>
+    <script src="/static/scripts/launch_simulation.js"></script>
     % end
 
 </body>
