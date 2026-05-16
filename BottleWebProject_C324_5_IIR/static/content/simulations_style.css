@@ -486,14 +486,8 @@
 }
 
 @media (max-width: 1024px) {
-    .river-simulation-grid,
-    .trains-simulation-grid {
+    .sim-grid {
         grid-template-columns: 1fr;
-    }
-
-    .river-canvas-container,
-    .canvas-container {
-        height: 420px;
     }
 }
 

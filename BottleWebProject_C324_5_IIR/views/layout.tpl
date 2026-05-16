@@ -98,7 +98,6 @@
     % if title == 'Симуляции':
     <script src="/static/scripts/onboarding_tour.js"></script>
     <script src="/static/scripts/tooltips.js"></script>
-    <script src="/static/scripts/trains_simulation.js"></script>
     <script src="/static/scripts/launch_simulation.js"></script>
     <script src="/static/scripts/trains_meeting.js"></script>
     <script src="/static/scripts/river_crossing.js"></script>
